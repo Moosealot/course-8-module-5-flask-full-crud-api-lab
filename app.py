@@ -63,6 +63,14 @@ def delete_event(id):
 
     return jsonify({"error": "Event not found"}), 404
 
+@app.route("/")
+def home():
+    return jsonify({"message": "Welcome to the Event API"}), 200
+
+@app.route("/events", methods=["GET"])
+def get_events():
+    return jsonify([event.to_dict() for event in events]), 200
+
 
 if __name__ == "__main__":
     app.run(debug=True)
